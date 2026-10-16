@@ -1,0 +1,209 @@
+.contact {
+  background: var(--white);
+}
+
+.contact-inner {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 100px;
+  align-items: start;
+}
+
+.contact-left {
+  position: sticky;
+  top: 120px;
+}
+
+.contact-big {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 5vw, 5rem);
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  color: var(--black);
+  margin: 20px 0 36px;
+}
+
+.contact-big .acc {
+  color: var(--accent);
+}
+
+.contact-info p {
+  font-size: 0.88rem;
+  line-height: 1.8;
+  color: var(--mid);
+}
+
+.contact-info a {
+  color: var(--accent);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.form-field {
+  margin-bottom: 14px;
+  border: none;
+  min-width: 0;
+}
+
+.form-lbl {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.form-ctrl {
+  width: 100%;
+  background: var(--paper-raised);
+  border: 1px solid rgba(123, 47, 255, 0.25);
+  color: var(--black);
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  padding: 14px 18px;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.form-ctrl:focus {
+  border-color: var(--accent);
+  background: rgba(123, 47, 255, 0.04);
+}
+
+.form-ctrl::placeholder {
+  color: rgba(10, 10, 10, 0.3);
+}
+
+.form-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Opciones de presupuesto como botones (el radio real queda oculto) */
+.budget-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.budget-opt input[type='radio'] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.budget-opt label {
+  display: block;
+  padding: 12px 16px;
+  border: 1px solid rgba(123, 47, 255, 0.25);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-align: center;
+  color: var(--mid);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.budget-opt label:hover,
+.budget-opt input:checked + label {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(123, 47, 255, 0.06);
+}
+
+.budget-opt {
+  position: relative;
+}
+
+.form-submit {
+  width: 100%;
+  margin-top: 8px;
+  padding: 18px;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  background: var(--accent);
+  color: var(--white);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 100%, 14px 100%);
+  transition: background 0.25s, transform 0.25s;
+}
+
+.form-submit:hover {
+  background: var(--black);
+  transform: translateY(-2px);
+}
+
+.form-submit-note {
+  margin-top: 14px;
+  font-size: 0.68rem;
+  line-height: 1.6;
+  text-align: center;
+  color: var(--mid);
+}
+
+.form-done {
+  background: rgba(123, 47, 255, 0.06);
+  border: 1px solid var(--accent);
+  padding: 48px 40px;
+  text-align: center;
+}
+
+.form-done h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.form-done p {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--mid);
+}
+
+@media (max-width: 1024px) {
+  .contact-inner {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .contact-left {
+    position: relative;
+    top: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .form-row,
+  .budget-options {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-big {
+    font-size: clamp(2.2rem, 10vw, 3.5rem);
+  }
+}

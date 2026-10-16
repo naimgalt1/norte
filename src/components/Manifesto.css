@@ -1,0 +1,107 @@
+.manifesto {
+  position: relative;
+  padding: 120px 60px;
+  background: var(--accent);
+  overflow: hidden;
+}
+
+/* Panel negro diagonal a la derecha (solo escritorio) */
+.manifesto-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 40%;
+  background: var(--black);
+  clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+.manifesto-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+}
+
+.manifesto-num {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: var(--black);
+  opacity: 0.5;
+  margin-bottom: 12px;
+}
+
+.manifesto-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 5vw, 5.5rem);
+  font-weight: 700;
+  line-height: 0.88;
+  letter-spacing: -0.03em;
+  color: var(--black);
+  margin-bottom: 52px;
+}
+
+.manifesto-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+}
+
+.manifesto-item {
+  position: relative;
+  overflow: hidden;
+  background: var(--white);
+  color: var(--black);
+  padding: 28px 32px;
+  transition: background 0.3s;
+}
+
+.manifesto-item::before {
+  content: attr(data-num);
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+}
+
+.manifesto-item:hover {
+  background: var(--paper-raised);
+}
+
+.manifesto-item h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+
+.manifesto-item p {
+  font-size: 0.85rem;
+  line-height: 1.75;
+  color: rgba(10, 10, 10, 0.65);
+}
+
+@media (max-width: 1024px) {
+  .manifesto {
+    padding: 80px 28px;
+  }
+
+  .manifesto-panel {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .manifesto {
+    padding: 64px 20px;
+  }
+
+  .manifesto-list {
+    grid-template-columns: 1fr;
+  }
+}

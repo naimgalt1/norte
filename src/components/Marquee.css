@@ -4,8 +4,6 @@
   left: 0;
   right: 0;
   z-index: 101;
-  overflow: hidden;
-  white-space: nowrap;
   background: var(--accent);
   padding: 12px 0;
   transition: transform 0.4s ease;
@@ -15,31 +13,26 @@
   transform: translateY(-100%);
 }
 
-.marquee-track {
-  display: inline-flex;
-  animation: marquee 18s linear infinite;
-}
-
-.marquee-item {
+.board {
+  display: flex;
+  justify-content: center;
   font-family: var(--font-mono);
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.15em;
-  text-transform: uppercase;
   color: var(--black);
-  padding: 0 32px;
+  white-space: pre;
 }
 
-.marquee-dot {
-  margin-left: 32px;
-  opacity: 0.4;
+/* Cada carácter ocupa un ancho fijo, como las celdas de un panel de salidas */
+.board-cell {
+  display: inline-block;
+  width: 1.1ch;
+  text-align: center;
 }
 
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-33.333%);
+@media (prefers-reduced-motion: reduce) {
+  .board-cell {
+    transition: none;
   }
 }

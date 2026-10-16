@@ -50,14 +50,29 @@
   filter: grayscale(0) brightness(0.65);
 }
 
+/* Recuadro morado translúcido sobre la imagen, sin degradado */
 .project-overlay {
   position: absolute;
-  inset: 0;
+  top: auto;
+  right: 16px;
+  bottom: 16px;
+  left: 16px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 40px;
-  background: linear-gradient(to top, rgba(10, 10, 10, 0.95) 0%, transparent 60%);
+  padding: 28px 32px;
+  background: rgba(123, 47, 255, 0.82);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: top 0.5s ease, right 0.5s ease, bottom 0.5s ease, left 0.5s ease;
+}
+
+/* Al pasar el cursor, el recuadro se expande y cubre toda la imagen */
+.project-card:hover .project-overlay {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 
 .project-tag {
@@ -65,7 +80,8 @@
   font-size: 0.58rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--white);
+  opacity: 0.85;
   margin-bottom: 10px;
 }
 
@@ -82,7 +98,7 @@
   max-width: 380px;
   font-size: 0.82rem;
   line-height: 1.65;
-  color: rgba(245, 245, 240, 0.55);
+  color: var(--white);
   opacity: 0;
   transform: translateY(8px);
   transition: opacity 0.35s ease, transform 0.35s ease;

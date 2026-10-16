@@ -1,7 +1,7 @@
 .manifesto {
   position: relative;
   padding: 120px 60px;
-  background: var(--black);
+  background: var(--accent);
   overflow: hidden;
 }
 

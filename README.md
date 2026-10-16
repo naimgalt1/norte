@@ -35,17 +35,18 @@ npm run build    # build de producción
 npm run preview  # previsualizar el build
 ```
 
-## Qué aprendí
 
-- **Scope en GSAP.** Un selector global como `'[data-reveal]'` anima elementos de todas las secciones a la vez. Limitar la búsqueda al contenedor de cada sección (`scope.current.querySelectorAll`) lo arregló.
-- **Un plugin no es un hook.** `useGSAP` se importa de `@gsap/react` y se usa dentro del componente; registrarlo con `gsap.registerPlugin` es un error que cometí y tuve que corregir.
-- **Escena de R3F con movimiento.** `useFrame` recibe `delta`, así que las rotaciones quedan igual de suaves en pantallas de distinta frecuencia.
-- **Z-index y posicionamiento.** Una regla de alta especificidad (`.hero > *`) sobrescribía el `position: absolute` del indicador de scroll. Aprendí a apuntar solo a los elementos que necesitan capa propia.
+## Lecciones técnicas
 
-## Retos
+- **Scope en GSAP.** Un selector global como `'[data-reveal]'` anima elementos de todas las secciones a la vez. Limitar la búsqueda al contenedor de cada sección (`scope.current.querySelectorAll`) lo evita.
+- **`useGSAP` es un hook, no un plugin.** Se importa de `@gsap/react` y se usa dentro del componente. Registrarlo con `gsap.registerPlugin` no tiene efecto.
+- **Animación por frame en R3F.** `useFrame` recibe `delta`, así que las rotaciones son iguales en pantallas de distinta frecuencia de refresco.
+- **Especificidad y posicionamiento.** Una regla genérica como `.hero > *` sobrescribe `position: absolute` de elementos internos. Conviene apuntar solo a los elementos que necesitan capa propia.
 
-- **Título de la portada a medio animar.** Al recargar en móvil mientras la pestaña no estaba en primer plano, las líneas del título se quedaban desplazadas. En una carga limpia la animación termina bien; el problema era del entorno de prueba, no de la web.
-- **Menú móvil con scroll de fondo.** Mientras el menú está abierto, el `body` no debe desplazarse. Lo resolví con un efecto que fija `overflow: hidden` y lo restaura al cerrar.
-- **Cursor personalizado.** Solo tiene sentido con ratón. Lo activo únicamente con `(hover: hover) and (pointer: fine)` para que no interfiera en móviles.
-- **Revelados que no se disparaban.** Con `scrollTrigger` y `once: true` hay que asegurarse de que el elemento existe cuando se crea el trigger; la solución fue definir el alcance dentro del hook.
-- **Imágenes externas.** Las rutas originales apuntaban a un servicio ajeno. Las mantengo como archivos locales en `public/images`.
+## Problemas resueltos
+
+- **Título a medio animar al recargar.** Las animaciones de GSAP se pausan en pestañas en segundo plano; en una carga normal terminan correctamente.
+- **Scroll de fondo con el menú abierto.** Un efecto fija `overflow: hidden` en el `body` mientras el menú está abierto y lo restaura al cerrarlo.
+- **Cursor personalizado en móviles.** Se activa solo con `(hover: hover) and (pointer: fine)` para no interferir con el toque.
+- **Revelados que no se disparaban.** El trigger de ScrollTrigger debe crearse cuando el elemento ya existe; el alcance se define dentro del hook.
+- **Dependencia de imágenes externas.** Las imágenes se mantienen como archivos locales en `public/images`.

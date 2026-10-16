@@ -12,7 +12,7 @@
   right: 0;
   bottom: 0;
   width: 40%;
-  background: var(--black);
+  background: #1d1a14 url('/images/horizon.svg') center / cover no-repeat;
   clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
 }
 
@@ -26,8 +26,8 @@
   font-family: var(--font-mono);
   font-size: 0.6rem;
   letter-spacing: 0.2em;
-  color: var(--black);
-  opacity: 0.5;
+  color: var(--white);
+  opacity: 0.75;
   margin-bottom: 12px;
 }
 
@@ -37,7 +37,7 @@
   font-weight: 700;
   line-height: 0.88;
   letter-spacing: -0.03em;
-  color: var(--black);
+  color: var(--white);
   margin-bottom: 52px;
 }
 
@@ -45,13 +45,13 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  border-top: 2px solid var(--black);
+  border-top: 2px solid var(--white);
 }
 
 .manifesto-item {
   position: relative;
   padding: 36px 0 36px 96px;
-  border-bottom: 1px solid rgba(10, 10, 10, 0.15);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
   transition: padding-left 0.4s ease;
 }
 
@@ -62,7 +62,7 @@
   left: 0;
   font-family: var(--font-mono);
   font-size: 0.7rem;
-  color: var(--accent);
+  color: var(--white);
   letter-spacing: 0.1em;
 }
 
@@ -73,7 +73,7 @@
 .manifesto-item h3 {
   font-size: 1.35rem;
   font-weight: 700;
-  color: var(--black);
+  color: var(--white);
   margin-bottom: 10px;
   letter-spacing: -0.01em;
 }
@@ -81,7 +81,7 @@
 .manifesto-item p {
   font-size: 0.85rem;
   line-height: 1.75;
-  color: rgba(10, 10, 10, 0.65);
+  color: rgba(255, 255, 255, 0.9);
 }
 
 @media (max-width: 1024px) {

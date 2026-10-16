@@ -208,3 +208,10 @@
     text-align: center;
   }
 }
+
+/* La brújula se desplaza a la derecha para dejar leer la palabra NORTE del fondo */
+@media (min-width: 1025px) {
+  .hero-canvas {
+    left: 26%;
+  }
+}

@@ -21,7 +21,7 @@ function Compass() {
   });
 
   return (
-    <group ref={groupRef}>
+    <group ref={groupRef} scale={0.7}>
       <mesh position={[0, 0.9, 0]}>
         <coneGeometry args={[0.28, 1.8, 4]} />
         <meshBasicMaterial color="#7b2fff" />
@@ -40,7 +40,7 @@ function Compass() {
 
 export default function HeroScene() {
   return (
-    <Canvas camera={{ position: [0, 0, 8], fov: 40 }} dpr={[1, 2]} aria-hidden="true">
+    <Canvas camera={{ position: [0, 0, 10], fov: 40 }} dpr={[1, 2]} aria-hidden="true">
       <Compass />
     </Canvas>
   );

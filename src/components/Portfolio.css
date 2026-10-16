@@ -53,6 +53,7 @@
 /* Recuadro morado translúcido sobre la imagen, sin degradado */
 .project-overlay {
   position: absolute;
+  z-index: 1;
   top: auto;
   right: 16px;
   bottom: 16px;
@@ -121,6 +122,7 @@
 
 .project-arrow {
   position: absolute;
+  z-index: 2;
   top: 32px;
   right: 32px;
   width: 44px;

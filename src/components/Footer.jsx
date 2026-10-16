@@ -17,7 +17,6 @@ export default function Footer() {
           <p className="footer-brand">
             NORTE <span>STUDIO</span>
           </p>
-          <p className="footer-tagline">Diseño con propósito.</p>
           <p className="footer-desc">
             Agencia de diseño y branding. Pequeña a propósito. Rigurosa por convicción. Barcelona, España.
           </p>
@@ -62,7 +61,6 @@ export default function Footer() {
 
       <div className="footer-bottom">
         <p>© 2026 Norte Studio — Todos los derechos reservados</p>
-        <p className="made-with">Diseño con propósito.</p>
       </div>
     </footer>
   );

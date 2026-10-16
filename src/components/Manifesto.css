@@ -43,39 +43,37 @@
 
 .manifesto-list {
   list-style: none;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2px;
+  display: flex;
+  flex-direction: column;
+  border-top: 2px solid var(--black);
 }
 
 .manifesto-item {
   position: relative;
-  overflow: hidden;
-  background: var(--white);
-  color: var(--black);
-  padding: 28px 32px;
-  transition: background 0.3s;
+  padding: 36px 0 36px 96px;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.15);
+  transition: padding-left 0.4s ease;
 }
 
 .manifesto-item::before {
   content: attr(data-num);
   position: absolute;
-  top: 20px;
-  right: 24px;
+  top: 38px;
+  left: 0;
   font-family: var(--font-mono);
-  font-size: 0.55rem;
+  font-size: 0.7rem;
   color: var(--accent);
   letter-spacing: 0.1em;
 }
 
 .manifesto-item:hover {
-  background: var(--paper-raised);
+  padding-left: 110px;
 }
 
 .manifesto-item h3 {
-  font-size: 1.1rem;
+  font-size: 1.35rem;
   font-weight: 700;
-  color: var(--accent);
+  color: var(--black);
   margin-bottom: 10px;
   letter-spacing: -0.01em;
 }
@@ -101,7 +99,11 @@
     padding: 64px 20px;
   }
 
-  .manifesto-list {
-    grid-template-columns: 1fr;
+  .manifesto-item {
+    padding-left: 64px;
+  }
+
+  .manifesto-item:hover {
+    padding-left: 72px;
   }
 }

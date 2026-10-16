@@ -1,60 +1,47 @@
 import { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 
-/** Malla wireframe que gira y se inclina suavemente siguiendo el puntero. */
-function Shape() {
-  const meshRef = useRef(null);
+/**
+ * Aguja de brújula: el polo norte (acento) apunta al cursor y, sin cursor,
+ * gira despacio. El polo sur queda en negro, como en una brújula real.
+ */
+function Compass() {
+  const groupRef = useRef(null);
+  const angle = useRef(0);
 
   useFrame((state, delta) => {
-    const mesh = meshRef.current;
-    if (!mesh) return;
-    mesh.rotation.x += delta * 0.12;
-    mesh.rotation.y += delta * 0.18;
-    mesh.position.x += (state.pointer.x * 0.6 - mesh.position.x) * 0.05;
-    mesh.position.y += (state.pointer.y * 0.4 - mesh.position.y) * 0.05;
+    const group = groupRef.current;
+    if (!group) return;
+    const { x, y } = state.pointer;
+    const moved = Math.abs(x) + Math.abs(y) > 0.02;
+    // Ángulo hacia el cursor (0 = arriba). Sin movimiento, la aguja sigue girando lento.
+    const target = moved ? Math.atan2(-x, y) : angle.current + delta * 0.25;
+    angle.current += (target - angle.current) * Math.min(1, delta * 4);
+    group.rotation.z = angle.current;
   });
 
   return (
-    <mesh ref={meshRef}>
-      <icosahedronGeometry args={[1.6, 1]} />
-      <meshBasicMaterial color="#7b2fff" wireframe transparent opacity={0.55} />
-    </mesh>
-  );
-}
-
-function Particles({ count = 220 }) {
-  const pointsRef = useRef(null);
-  const positions = useRef(null);
-
-  if (!positions.current) {
-    const array = new Float32Array(count * 3);
-    for (let i = 0; i < count; i += 1) {
-      array[i * 3] = (Math.random() - 0.5) * 12;
-      array[i * 3 + 1] = (Math.random() - 0.5) * 8;
-      array[i * 3 + 2] = (Math.random() - 0.5) * 6;
-    }
-    positions.current = array;
-  }
-
-  useFrame((_state, delta) => {
-    if (pointsRef.current) pointsRef.current.rotation.y += delta * 0.04;
-  });
-
-  return (
-    <points ref={pointsRef}>
-      <bufferGeometry>
-        <bufferAttribute attach="attributes-position" args={[positions.current, 3]} />
-      </bufferGeometry>
-      <pointsMaterial color="#0a0a0a" size={0.03} transparent opacity={0.5} />
-    </points>
+    <group ref={groupRef}>
+      <mesh position={[0, 0.9, 0]}>
+        <coneGeometry args={[0.28, 1.8, 4]} />
+        <meshBasicMaterial color="#7b2fff" />
+      </mesh>
+      <mesh position={[0, -0.9, 0]} rotation={[0, 0, Math.PI]}>
+        <coneGeometry args={[0.28, 1.8, 4]} />
+        <meshBasicMaterial color="#0a0a0a" />
+      </mesh>
+      <mesh>
+        <torusGeometry args={[2.1, 0.008, 8, 160]} />
+        <meshBasicMaterial color="#7b2fff" transparent opacity={0.35} />
+      </mesh>
+    </group>
   );
 }
 
 export default function HeroScene() {
   return (
-    <Canvas camera={{ position: [0, 0, 5], fov: 45 }} dpr={[1, 2]} aria-hidden="true">
-      <Shape />
-      <Particles />
+    <Canvas camera={{ position: [0, 0, 8], fov: 40 }} dpr={[1, 2]} aria-hidden="true">
+      <Compass />
     </Canvas>
   );
 }

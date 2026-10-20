@@ -8,18 +8,6 @@
   overflow: hidden;
 }
 
-/* La escena 3D ocupa toda la portada, por detrás del texto */
-.hero-canvas {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.hero-canvas canvas {
-  width: 100% !important;
-  height: 100% !important;
-}
 
 .hero-bg-text {
   position: absolute;
@@ -209,9 +197,3 @@
   }
 }
 
-/* La brújula se desplaza a la derecha para dejar leer la palabra NORTE del fondo */
-@media (min-width: 1025px) {
-  .hero-canvas {
-    left: 26%;
-  }
-}

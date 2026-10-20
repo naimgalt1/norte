@@ -1,7 +1,6 @@
 import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-import HeroScene from './HeroScene.jsx';
 import './Hero.css';
 
 /** Intro de la portada: las líneas del título suben una a una al cargar. */
@@ -21,9 +20,6 @@ export default function Hero() {
 
   return (
     <section id="hero" className="hero" ref={scope}>
-      <div className="hero-canvas">
-        <HeroScene />
-      </div>
 
       <div className="hero-bg-text" aria-hidden="true">
         NORTE
